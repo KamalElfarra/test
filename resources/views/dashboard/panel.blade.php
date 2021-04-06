@@ -89,27 +89,10 @@
                                 </div>
                             </li>
 
-                            <li class="nav-item ">
-                                <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-4" aria-controls="submenu-4"><i class="fab fa-fw fa-wpforms"></i>عن الموقع</a>
-                                <div id="submenu-4" class="collapse submenu" style="">
-
-                                    <ul class="nav flex-column">
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="/blog/create">إضافة</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="/blog/view">تعديل</a>
-                                        </li>
-
-                                    </ul>
-
-                                </div>
-                            </li>
-
 
                             <li class="nav-item ">
                                 <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-4" aria-controls="submenu-4"><i class="fab fa-fw fa-wpforms"></i>السيرة الذاتية</a>
-                                <div id="submenu-4" class="collapse submenu" style="">
+                                <div id="submenu-5" class="collapse submenu" style="">
 
                                     <ul class="nav flex-column">
                                         <li class="nav-item">
@@ -125,14 +108,14 @@
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="/setting/create" data-toggle="" aria-expanded="false" data-target="#submenu-5" aria-controls="submenu-5"><i class="fas fa-fw fa-table"></i>إعدادت الموقع</a>
-                                <div id="submenu-5" class="collapse submenu" style="">
+                                <div id="submenu-6" class="collapse submenu" style="">
 
                                 </div>
                             </li>
 
                             <li class="nav-item">
                                 <a class="nav-link" href="/contact/view" data-toggle="collapse" aria-expanded="false" data-target="#submenu-6" aria-controls="submenu-6"><i class="fas fa-fw fa-file"></i> الإتصال </a>
-                                <div id="submenu-6" class="collapse submenu" style="">
+                                <div id="submenu-7" class="collapse submenu" style="">
 
 
                                     <ul class="nav flex-column">
