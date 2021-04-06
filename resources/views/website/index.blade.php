@@ -15,8 +15,7 @@
 				<div id="navbar" class="collapse">
 					<ul>
 						<li class="active"><a href="#" data-nav-section="home">الرئيسية</a></li>
-						<li><a href="/blog/site" data-nav-section="/blog">عن الموقع</a></li>
-						<li><a href="#" data-nav-section="about">من نحن</a></li>
+						<li><a href="#" data-nav-section="about">من نحن؟</a></li>
 						<li><a href="#" data-nav-section="services">الخدمات التدريبية</a></li>
 						<li><a href="#" data-nav-section="research">البحوث والدراسات الإدارية</a></li>
 						<li><a href="#" data-nav-section="experience">خدمات إستشارية</a></li>

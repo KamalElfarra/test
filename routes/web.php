@@ -37,7 +37,7 @@ Route::get("/logout" , 'Auth\LoginController@logout');
 
 Route::prefix('')->group(function () {
 
-    Route::get('/panel_d','panelcontroller@index');
+    Route::get('/p_ahmad','panelcontroller@index');
 
 });
 
