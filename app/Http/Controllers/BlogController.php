@@ -8,21 +8,26 @@ use App\contactpersonal;
 use App\files;
 use App\Post;
 use App\setting;
+use App\Traits\GeneralMessage;
 use Illuminate\Http\Request;
 
 class BlogController extends Controller
 {
+    use GeneralMessage;
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return \Illuminate\Http\JsonResponse
      */
     public function index()
     {
 
-        return view('blog.index')->with('category',Category::all())
-            ->with('blog',blog::first())
-            ->with('posts',Post::first());
+        $category=Category::all();
+        $blog=blog::first();
+        $posts=Post::first();
+
+     return $this->returnData(compact('category','blog','posts'),"done");
+
 
     }
 
@@ -47,17 +52,13 @@ class BlogController extends Controller
 
     }
 
-    public function create()
-    {
 
-        return view('blog.create');
-
-    }
 
     public function view()
     {
-
-        return view('blog.view_data')->with('post',blog::all());
+        $post=blog::all();
+//        return view('blog.view_data',compact('post'));
+        return $this->returnData(compact('post'));
 
     }
 
@@ -80,11 +81,11 @@ class BlogController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\RedirectResponse
+     * @return \Illuminate\Http\JsonResponse
      */
     public function store(Request $request)
     {
-        $this->validate($request,[
+      $validate=  $this->validate($request,[
 
             'name'=>'required',
             'title'=>'required',
@@ -92,13 +93,19 @@ class BlogController extends Controller
 
         ]);
 
+      if (!$validate){
+          return $this->returnValidationError($validate);
+      }else{
+          return $this->returnSuccessMessage("the data stored success");
+      }
+
         $blog=new blog();
         $blog->name=$request->name;
         $blog->title=$request->title;
         $blog->contents=$request->contents;
 
         $blog->save();
-        return redirect()->back();
+       return $this->returnData([],"blog added successful");
 
     }
 
@@ -136,7 +143,7 @@ class BlogController extends Controller
 
         $blog=blog::find($id);
 
-        $this->validate($request,[
+        $validate=\Validator::make($request->all(),[
 
             'name'=>'required',
             'title'=>'required',
@@ -144,12 +151,22 @@ class BlogController extends Controller
 
         ]);
 
+        if ($validate->fails()){
+
+            return $this->returnValidationError($validate);
+
+        }else{
+
+            return $this->returnSuccessMessage("updated success");
+
+        }
+
         $blog->name=$request->name;
         $blog->title=$request->title;
         $blog->contents=$request->contents;
 
         $blog->save();
-        return redirect('/blog/view');
+        return $this->returnData([],"the data was updated success");
     }
 
     /**
@@ -162,6 +179,14 @@ class BlogController extends Controller
     {
         $delete=blog::find($id);
         $delete->destroy($id);
-        return redirect()->back();
+
+        if ($delete){
+
+            return $this->returnSuccessMessage("the data was deleted successful");
+        }else{
+
+            return $this->returnError(000000,'there is an error on the delete');
+
+        }
     }
 }
